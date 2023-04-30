@@ -1,14 +1,15 @@
+server:
+  port: 8080
+
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:1234/schema_name
-    username: test_user
-    password: test_pswd
+    url: jdbc:postgresql://null:null/null
+    username: null
+    password: null
     driverClassName: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-      eclipselink:
-        ddl-generation: none
