@@ -1,25 +1,26 @@
 package com.univ.billingbaselite.models.entities;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
-import java.util.UUID;
+public abstract class Product {
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "PRODUCT")
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "ID")
-    private UUID id;
+    @Column(name = "NAME")
+    private String name;
+
+    @Column(name = "DESC")
+    private String description;
+
+    @Column(name = "PRODUCT_VALUE")
+    private String value;
+
+    @Column(name = "STATUS")
+    @Enumerated(value = EnumType.STRING)
+    private ProductStatus status;
+
+    public enum ProductStatus {
+        OK,
+        TERMINATED
+    }
 }

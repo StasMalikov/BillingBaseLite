@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class AccountDTO {
 
     private String id;
-    private String accountStatus;
+    private Account.AccountStatus accountStatus;
 
     public AccountDTO(Account account) {
         this.id = account.getId().toString();
