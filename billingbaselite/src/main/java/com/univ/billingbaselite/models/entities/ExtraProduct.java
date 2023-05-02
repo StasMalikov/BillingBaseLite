@@ -1,6 +1,5 @@
 package com.univ.billingbaselite.models.entities;
 
-import com.univ.billingbaselite.models.dtos.AccountDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,24 +9,17 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ACCOUNT")
-public class Account {
-
+@Table(name = "EXTRA_PRODUCT")
+public class ExtraProduct {
     @Id
-    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "ID")
     private UUID id;
-
-    @Column(name = "ACCOUNT_STATUS")
-    private String accountStatus;
-
-    public Account(AccountDTO accountDTO) {
-        this.accountStatus = accountDTO.getAccountStatus();
-    }
 }

@@ -1,5 +1,6 @@
 package com.univ.billingbaselite.controllers;
 
+import com.univ.billingbaselite.config.GlobalConstants;
 import com.univ.billingbaselite.models.dtos.AccountDTO;
 import com.univ.billingbaselite.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping("billing-base-lite/v1/accounts")
+@RequestMapping(GlobalConstants.URL_PATH + "/accounts")
 public class AccountController {
     AccountService accountService;
 
