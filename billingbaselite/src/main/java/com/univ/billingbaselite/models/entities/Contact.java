@@ -32,17 +32,23 @@ public class Contact {
     @Column(name = "STATUS")
     @Enumerated(value = EnumType.STRING)
     private ContactStatus status;
+
     @Column(name = "VALUE")
     private String contactValue;
+
     @Column(name = "CATEGORY")
     @Enumerated(value = EnumType.STRING)
     private ContactCategory category;
+
     @Column(name = "FIRST_NAME")
     private String firstName;
+
     @Column(name = "MIDDLE_NAME")
     private String middleName;
+
     @Column(name = "LAST_NAME")
     private String lastName;
+
     @Column(name = "LAST_CNTCT_DATE")
     private Date lastContactDate;
 

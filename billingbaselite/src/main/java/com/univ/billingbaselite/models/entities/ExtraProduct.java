@@ -26,25 +26,24 @@ import java.util.UUID;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "EXTRA_PRODUCT")
-public class ExtraProduct extends Product {
+public class ExtraProduct extends BaseProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
     private UUID id;
 
-    @Column(name = "COST")
-    private BigDecimal cost;
-
     @Column(name = "START_DATE")
     private Date startDate;
+
     @Column(name = "END_DATE")
     private Date endDate;
+
     @Column(name = "CATEGORY")
     @Enumerated(value = EnumType.STRING)
     private ExtraProductCategory category;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "acct_id", nullable = false)
+    @JoinColumn(name = "ACCT_ID")
     private Account account;
 
     public enum ExtraProductCategory {
@@ -53,4 +52,8 @@ public class ExtraProduct extends Product {
         NUMBERS_CHECKER
     }
 
+    @Override
+    public UUID getId() {
+        return id;
+    }
 }
