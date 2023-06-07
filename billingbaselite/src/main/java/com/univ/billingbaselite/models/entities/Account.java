@@ -38,7 +38,8 @@ public class Account {
     @Enumerated(value = EnumType.STRING)
     private AccountStatus accountStatus;
 
-    private Date created;
+    @Column(name = "CREATED_DATE")
+    private Date createdDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cust_id", nullable = false)
@@ -57,6 +58,12 @@ public class Account {
 
     public Account(AccountDTO accountDTO) {
         this.accountStatus = accountDTO.getAccountStatus();
+        this.createdDate = new Date();
+    }
+
+    public Account update(AccountDTO accountDTO) {
+        this.accountStatus = accountDTO.getAccountStatus();
+        return this;
     }
 
     public enum AccountStatus {

@@ -1,5 +1,6 @@
 package com.univ.billingbaselite.models.entities;
 
+import com.univ.billingbaselite.models.dtos.CustomerDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -11,6 +12,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -36,10 +38,23 @@ public class Customer {
     @Column(name = "LAST_NAME")
     private String lastName;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Account> accounts;
+
+    public Customer(CustomerDTO customerDTO) {
+        update(customerDTO);
+    }
+
+    public Customer update(CustomerDTO customerDTO) {
+        this.firstName = customerDTO.getFirstName();
+        this.middleName = customerDTO.getMiddleName();
+        this.lastName = customerDTO.getLastName();
+        this.birthDate = customerDTO.getBirthDate();
+        return this;
+    }
 
 }
