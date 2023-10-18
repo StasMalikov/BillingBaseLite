@@ -53,7 +53,7 @@ public class Contact {
     private Date lastContactDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "acct_id", nullable = false)
+    @JoinColumn(name = "ACCT_ID", nullable = false)
     private Account account;
 
     private enum ContactCategory {

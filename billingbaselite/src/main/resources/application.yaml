@@ -1,15 +1,45 @@
+# http://localhost:8080/swagger-ui/index.html
+
 server:
   port: 8080
 
 spring:
   datasource:
-    url: jdbc:postgresql://null:null/null
-    username: null
-    password: null
+    url: jdbc:postgresql://127.0.0.1:5432/billing-base-lite-db
+    username: postgres
+    password: 1234
     driverClassName: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create-drop
+#      ddl-auto: create
+      ddl-auto: none
+#      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  quartz:
+    properties:
+      org:
+        quartz:
+          dataSource:
+            postgres:
+              driver: org.postgresql.Driver
+              URL: jdbc:postgresql://127.0.0.1:5432/billing-base-lite-db
+              user: postgres
+              password: 1234
+          scheduler:
+            instanceName: spring-boot-quartz
+            instanceId: AUTO
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 20
+            threadPriority: 5
+          jobStore:
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+            dataSource: postgres
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            useProperties: true
+            tablePrefix: QRTZ_
+            isClustered: true
+            clusterCheckinInterval: 500
+            dontSetAutoCommitFalse: false

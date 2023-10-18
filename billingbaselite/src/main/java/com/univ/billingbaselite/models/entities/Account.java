@@ -42,7 +42,7 @@ public class Account {
     private Date createdDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cust_id", nullable = false)
+    @JoinColumn(name = "CUST_ID", nullable = false)
     private Customer customer;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
@@ -53,8 +53,6 @@ public class Account {
 
     @ManyToMany(mappedBy = "servicedAccounts", fetch = FetchType.LAZY)
     private List<ServicePlan> servicePlans;
-
-    //todo: field ServiceRegion
 
     public Account(AccountDTO accountDTO) {
         this.accountStatus = accountDTO.getAccountStatus();
