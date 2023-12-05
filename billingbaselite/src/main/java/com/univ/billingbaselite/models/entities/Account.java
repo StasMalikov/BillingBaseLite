@@ -66,6 +66,9 @@ public class Account {
 
     public enum AccountStatus {
         NORMAL,
+        ON_POSITIVE_RECOMMENDATION,
+        ON_SUSPENSION,
+        ON_SUSPENSION_AND_RECOMMENDATION,
         TERMINATED,
         ON_CONTROL,
         ARCHIVED

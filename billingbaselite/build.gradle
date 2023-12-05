@@ -26,6 +26,7 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
 	implementation 'org.springframework.boot:spring-boot-starter-quartz'
 	implementation 'c3p0:c3p0:0.9.1.2'
+	implementation 'org.keycloak:keycloak-spring-boot-starter:21.0.1'
 
 
 	compileOnly 'org.projectlombok:lombok'
@@ -36,4 +37,43 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+bootJar {
+	mainClass = 'com.univ.billingbaselite.BillingbaseliteApplication'
+	archiveFileName = 'billing-base-lite.jar'
+}
+
+springBoot {
+	buildInfo {
+		properties {
+			artifact = 'cm-api'
+			version = '0.0.1'
+			group = 'com.univ.billingbaselite'
+			name = 'Billing Base Lite API'
+		}
+	}
+}
+
+task copyMainJarAndConfFile(type: Copy) {
+	into("config") {
+		from("$rootDir/config")
+		from("$rootDir/cm-api/src/main/resources")
+		include("*.yaml")
+	}
+	from("$rootDir/bin") {
+		into("bin")
+	}
+	from("$buildDir/libs") {
+		include("*.jar")
+	}
+	into("$buildDir/target")
+}
+
+task buildZip(type: Zip) {
+	dependsOn("build")
+	dependsOn("copyMainJarAndConfFile")
+	archiveFileName.set("BillingBaseLite.zip")
+	destinationDirectory.set(file("$rootDir/target/"))
+	from("$buildDir/target")
 }

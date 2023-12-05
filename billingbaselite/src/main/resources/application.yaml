@@ -1,7 +1,19 @@
 # http://localhost:8080/swagger-ui/index.html
 
 server:
-  port: 8080
+  port: 9091
+
+keycloak:
+  auth-server-url: http://localhost:8080
+  realm: RealmExample
+  resource: Backend
+  security-constraints:
+    - authRoles:
+        - uma_authorization
+      securityCollections:
+        - patterns:
+            - /secured/*
+            - /billing-base-lite/v1/*
 
 spring:
   datasource:

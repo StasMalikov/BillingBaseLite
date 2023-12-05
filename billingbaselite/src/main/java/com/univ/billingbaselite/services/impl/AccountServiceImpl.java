@@ -2,6 +2,7 @@ package com.univ.billingbaselite.services.impl;
 
 import com.univ.billingbaselite.models.dtos.AccountDTO;
 import com.univ.billingbaselite.models.entities.Account;
+import com.univ.billingbaselite.models.entities.BaseProduct;
 import com.univ.billingbaselite.repositories.AccountRepository;
 import com.univ.billingbaselite.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,36 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDTO test() {
+        return null;
+    }
+
+    @Override
+    public boolean checkProductsDowngrade(String id) {
+        return false;
+    }
+
+    @Override
+    public void updateAccounts(List<Account> accounts) {
+        accountRepository.saveAll(accounts);
+    }
+
+    @Override
+    public List<Account> getAllNonRatedAccountsWithPositiveBalance() {
+        return accountRepository.getAllNonRatedAccountsWithPositiveBalance();
+    }
+
+    @Override
+    public List<Account> getAllNonRatedAccountsWithNegativeBalance() {
+        return accountRepository.getAllNonRatedAccountsWithNegativeBalance();
+    }
+
+    @Override
+    public List<BaseProduct> getRecommendationProducts(UUID id) {
+        return null;
+    }
+
+    @Override
+    public List<BaseProduct> getSuspensionProducts(UUID id) {
         return null;
     }
 }
