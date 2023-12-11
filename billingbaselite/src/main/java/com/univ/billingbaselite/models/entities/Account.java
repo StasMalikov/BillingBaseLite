@@ -49,6 +49,9 @@ public class Account {
     private List<Contact> contacts;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    private List<Balance> balances;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     private List<ExtraProduct> extraProducts;
 
     @ManyToMany(mappedBy = "servicedAccounts", fetch = FetchType.LAZY)

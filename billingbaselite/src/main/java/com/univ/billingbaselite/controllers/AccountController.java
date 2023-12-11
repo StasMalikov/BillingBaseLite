@@ -16,8 +16,8 @@ import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@RestController
-@RequestMapping(GlobalConstants.URL_PATH + "/accounts")
+//@RestController
+//@RequestMapping(GlobalConstants.URL_PATH + "/accounts")
 public class AccountController {
     AccountService accountService;
 

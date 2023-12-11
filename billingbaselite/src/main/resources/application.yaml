@@ -12,8 +12,9 @@ keycloak:
         - uma_authorization
       securityCollections:
         - patterns:
-            - /secured/*
-            - /billing-base-lite/v1/*
+            - /*
+#            - /secured/*
+#            - /billing-base-lite/v1/*
 
 spring:
   datasource:

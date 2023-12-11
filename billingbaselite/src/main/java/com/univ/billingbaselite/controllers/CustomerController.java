@@ -16,8 +16,8 @@ import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-@RestController
-@RequestMapping(GlobalConstants.URL_PATH + "/customers")
+//@RestController
+//@RequestMapping(GlobalConstants.URL_PATH + "/customers")
 public class CustomerController {
 
     CustomerService customerService;

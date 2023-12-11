@@ -20,22 +20,20 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(GlobalConstants.URL_PATH + "/jobs")
-public class JobController {
+@RequestMapping(GlobalConstants.URL_PATH + "/historyJobs")
+public class JobHistoryController {
 
     private final JobService jobService;
 
     @Autowired
-    public JobController(JobService jobService) {
+    public JobHistoryController(JobService jobService) {
         this.jobService = jobService;
     }
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public Page<JobHistoryDTO> getAll(
-            @RequestParam(value = "filters", required = false) String filters,
-            @RequestParam(value = "sort", required = false) String orders,
-            @RequestParam(value = "page", defaultValue = "0", required = false) int page,
-            @RequestParam(value = "limit", defaultValue = "10", required = false) int limit) {
+            @RequestParam(value = "jobStatus", required = false) String jobStatus,
+            @RequestParam(value = "accountNumber", required = false) String accountNumber) {
         return jobService.getAllJobs();
     }
 

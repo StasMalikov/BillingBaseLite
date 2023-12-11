@@ -1,7 +1,10 @@
 package com.univ.billingbaselite.models.entities;
 
+import com.univ.billingbaselite.models.dtos.ServicePlanDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,16 +19,16 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "SERVICE_PLAN")
-public class ServicePlan extends BaseProduct {
+public class ServicePlan  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -41,9 +44,31 @@ public class ServicePlan extends BaseProduct {
             inverseJoinColumns = @JoinColumn(name = "ACCOUNT_ID"))
     private List<Account> servicedAccounts;
 
-    @Override
-    public UUID getId() {
-        return id;
-    }
+    @Column(name = "NAME")
+    private String name;
 
+    @Column(name = "DESCRIPTION")
+    private String description;
+
+    @Column(name = "STATUS")
+    @Enumerated(value = EnumType.STRING)
+    private BaseProduct.ProductStatus status;
+
+    @Column(name = "COST")
+    private BigDecimal cost;
+
+    @Column(name = "VERSION")
+    private Integer version;
+
+    @OneToMany(mappedBy = "balance", fetch = FetchType.LAZY)
+    private List<WriteOff> writeOffs;
+
+    public ServicePlan(ServicePlanDTO servicePlanDTO, List<ServiceProduct> serviceProducts) {
+        this.serviceProducts = serviceProducts;
+        this.name = servicePlanDTO.getName();
+        this.description = servicePlanDTO.getDescription();
+        this.status = servicePlanDTO.getStatus();
+        this.cost = servicePlanDTO.getCost();
+        this.version = servicePlanDTO.getVersion();
+    }
 }
