@@ -32,6 +32,6 @@ public class TreatmentType {
     @Column(name = "EXECUTION_CLASS")
     private String executionClass;
 
-    @OneToMany(mappedBy = "TreatmentType", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "treatmentType", fetch = FetchType.LAZY)
     private List<TreatmentTemplate> treatmentTemplates;
 }

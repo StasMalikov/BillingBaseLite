@@ -31,8 +31,8 @@ public class JobTemplate {
     @Column(name = "ID")
     private UUID id;
 
-    @ManyToMany(mappedBy = "jobTemplates", fetch = FetchType.LAZY)
-    private List<Policy> policies;
+//    @ManyToMany(mappedBy = "jobTemplates", fetch = FetchType.LAZY)
+//    private List<Policy> policies;
 
     @Column(name = "JOB_CLASS")
     private String jobClass;

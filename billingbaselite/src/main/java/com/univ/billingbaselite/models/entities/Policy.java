@@ -41,11 +41,11 @@ public class Policy {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @ManyToMany(mappedBy = "policies", fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "policies_job_template",
-            joinColumns = @JoinColumn(name = "policy_id"),
-            inverseJoinColumns = @JoinColumn(name = "job_Template_id"))
-    private List<JobTemplate> jobTemplates;
+//    @ManyToMany(mappedBy = "policies", fetch = FetchType.LAZY)
+//    @JoinTable(
+//            name = "policies_job_template",
+//            joinColumns = @JoinColumn(name = "policy_id"),
+//            inverseJoinColumns = @JoinColumn(name = "job_Template_id"))
+//    private List<JobTemplate> jobTemplates;
 
 }
