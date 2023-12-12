@@ -46,7 +46,7 @@ public class Balance {
     @OneToMany(mappedBy = "balance", fetch = FetchType.LAZY)
     private List<Payment> payments;
 
-    @OneToMany(mappedBy = "balance", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "accountBalance", fetch = FetchType.LAZY)
     private List<WriteOff> writeOffs;
 
 }

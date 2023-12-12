@@ -60,7 +60,7 @@ public class ServicePlan  {
     @Column(name = "VERSION")
     private Integer version;
 
-    @OneToMany(mappedBy = "balance", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "servicePlan", fetch = FetchType.LAZY)
     private List<WriteOff> writeOffs;
 
     public ServicePlan(ServicePlanDTO servicePlanDTO, List<ServiceProduct> serviceProducts) {

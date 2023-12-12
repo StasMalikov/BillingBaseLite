@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -32,7 +33,7 @@ public class JobTemplate {
     private UUID id;
 
 //    @ManyToMany(mappedBy = "jobTemplates", fetch = FetchType.LAZY)
-//    private List<Policy> policies;
+//    private Set<Policy> policies;
 
     @Column(name = "JOB_CLASS")
     private String jobClass;

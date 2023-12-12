@@ -27,7 +27,6 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "EXTRA_PRODUCT")
 public class ExtraProduct {
@@ -62,7 +61,7 @@ public class ExtraProduct {
     @Enumerated(value = EnumType.STRING)
     private BaseProduct.ProductStatus status;
 
-    @OneToMany(mappedBy = "balance", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "extraProduct", fetch = FetchType.LAZY)
     private List<WriteOff> writeOffs;
 
     @Column(name = "COST")

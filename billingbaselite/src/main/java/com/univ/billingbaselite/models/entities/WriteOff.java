@@ -36,7 +36,7 @@ public class WriteOff {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "BALANCE_ID", nullable = false)
-    private Balance balance;
+    private Balance accountBalance;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "EXTRA_PRODUCT_ID")

@@ -15,6 +15,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -46,6 +47,6 @@ public class Policy {
 //            name = "policies_job_template",
 //            joinColumns = @JoinColumn(name = "policy_id"),
 //            inverseJoinColumns = @JoinColumn(name = "job_Template_id"))
-//    private List<JobTemplate> jobTemplates;
+//    private Set<JobTemplate> jobTemplates;
 
 }
