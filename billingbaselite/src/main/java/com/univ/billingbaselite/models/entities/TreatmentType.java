@@ -6,9 +6,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,9 +19,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "POLICY")
-public class Policy {
-
+@Table(name = "TREATMENT_TYPE")
+public class TreatmentType {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
@@ -32,20 +29,9 @@ public class Policy {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "STATUS")
-    private String status;
+    @Column(name = "EXECUTION_CLASS")
+    private String executionClass;
 
-    @Column(name = "VALUES")
-    private String values;
-
-    @Column(name = "DESCRIPTION")
-    private String description;
-
-    @ManyToMany(mappedBy = "policies", fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "policies_job_template",
-            joinColumns = @JoinColumn(name = "policy_id"),
-            inverseJoinColumns = @JoinColumn(name = "job_Template_id"))
-    private List<JobTemplate> jobTemplates;
-
+    @OneToMany(mappedBy = "TreatmentType", fetch = FetchType.LAZY)
+    private List<TreatmentTemplate> treatmentTemplates;
 }

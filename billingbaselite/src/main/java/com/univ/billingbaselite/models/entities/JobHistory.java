@@ -6,9 +6,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -58,6 +62,16 @@ public class JobHistory implements Serializable {
     private String errorMsg;
     @Column(name = "STATUS_DATE")
     private Date statusDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "JOB_TEMPLATE_ID")
+    private JobTemplate jobTemplate;
+
+    @OneToOne(mappedBy = "jobHistory")
+    private AccountRecommendation accountRecommendation;
+
+    @OneToOne(mappedBy = "jobHistory")
+    private AccountTreatment accountTreatment;
 
     public JobHistory(JobHistoryDTO jobInfoDTO) {
         this.jobId = jobInfoDTO.getJobId();

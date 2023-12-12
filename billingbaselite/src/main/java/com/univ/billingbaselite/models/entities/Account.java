@@ -57,6 +57,12 @@ public class Account {
     @ManyToMany(mappedBy = "servicedAccounts", fetch = FetchType.LAZY)
     private List<ServicePlan> servicePlans;
 
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    private List<AccountRecommendation> accountRecommendations;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    private List<AccountTreatment> accountTreatments;
+
     public Account(AccountDTO accountDTO) {
         this.accountStatus = accountDTO.getAccountStatus();
         this.createdDate = new Date();
